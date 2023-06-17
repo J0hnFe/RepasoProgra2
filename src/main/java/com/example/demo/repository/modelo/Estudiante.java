@@ -1,9 +1,21 @@
 package com.example.demo.repository.modelo;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "estudiante") //mapear tabla a objeto
 public class Estudiante {
 	
+	@Column(name = "estu_nombre") //mapear columnas con atributos
 	private String nombre;
+	@Column(name = "estu_apellido")
 	private String apellido;
+	
+	@Id	//definir PK
+	@Column(name = "estu_cedula")
 	private String cedula;
 	
 	//toString 
