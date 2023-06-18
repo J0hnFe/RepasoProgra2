@@ -25,13 +25,7 @@ public class RepasoProgra2Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		CtaBancaria bancaria = new CtaBancaria();
-		bancaria.setCedulaPropietario("178");
-		bancaria.setNumero("1001");
-		bancaria.setSaldo(new BigDecimal(100));
-		bancaria.setTipo("A");
-		
-		this.bancariaService.aperturar(bancaria);
+
 	}
 
 }
