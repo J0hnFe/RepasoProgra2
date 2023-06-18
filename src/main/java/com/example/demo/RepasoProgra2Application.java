@@ -1,10 +1,14 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.ejercicio.repository.modelo.CtaBancaria;
+import com.example.demo.ejercicio.service.ICtaBancariaService;
 import com.example.demo.repository.EstudianteRepoImpl;
 import com.example.demo.repository.modelo.Estudiante;
 import com.example.demo.service.IEstudianteService;
@@ -13,7 +17,7 @@ import com.example.demo.service.IEstudianteService;
 public class RepasoProgra2Application implements CommandLineRunner{
 	
 	@Autowired
-	IEstudianteService estudianteService;
+	private ICtaBancariaService bancariaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(RepasoProgra2Application.class, args);
@@ -21,13 +25,13 @@ public class RepasoProgra2Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Estudiante estudiante = new Estudiante();
-		estudiante.setApellido("Fritada");
-		estudiante.setCedula("1122");
-		estudiante.setNombre("Jeronimo");
+		CtaBancaria bancaria = new CtaBancaria();
+		bancaria.setCedulaPropietario("178");
+		bancaria.setNumero("1001");
+		bancaria.setSaldo(new BigDecimal(100));
+		bancaria.setTipo("A");
 		
-		this.estudianteService.agregar(estudiante);
-		
+		this.bancariaService.aperturar(bancaria);
 	}
 
 }
