@@ -15,9 +15,7 @@ import com.example.demo.service.IEstudianteService;
 
 @SpringBootApplication
 public class RepasoProgra2Application implements CommandLineRunner{
-	
-	@Autowired
-	private ICtaBancariaService bancariaService;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(RepasoProgra2Application.class, args);
@@ -27,5 +25,4 @@ public class RepasoProgra2Application implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 	}
-
 }

@@ -2,6 +2,7 @@ package com.example.demo.ejercicio.repository.modelo;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Empleado {
 	@Column(name = "empl_cargo")
 	private String cargo;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "empl_ciu_id")	
 	//PK de ciudadano pasa como FK de empleado, siempre iniciales de esta clase primero "empl"
 	private Ciudadano ciudadano;
