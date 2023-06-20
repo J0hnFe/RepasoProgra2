@@ -32,6 +32,7 @@ public class HabitacionRepoImpl implements IHabitacionRepo{
 
 	@Override
 	public void eliminar(Integer id) {
-		this.entityManager.remove(id);
+		Habitacion habitacionTemp = this.seleccionar(id);
+		this.entityManager.remove(habitacionTemp);
 	}
 }
