@@ -32,7 +32,8 @@ public class CiudadanoRepoImpl implements ICiudadanoRepo{
 
 	@Override
 	public void eliminar(Integer id) {
-		this.entityManager.remove(id);
+		Ciudadano c = this.seleccionar(id);
+		this.entityManager.remove(c);
 	}
 	
 
