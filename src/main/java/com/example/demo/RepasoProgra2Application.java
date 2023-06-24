@@ -9,18 +9,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.ejercicio.repository.modelo.Ciudadano;
-import com.example.demo.ejercicio.repository.modelo.CtaBancaria;
-import com.example.demo.ejercicio.repository.modelo.Empleado;
 import com.example.demo.ejercicio.repository.modelo.Habitacion;
 import com.example.demo.ejercicio.repository.modelo.Hotel;
-import com.example.demo.ejercicio.service.ICiudadanoService;
-import com.example.demo.ejercicio.service.ICtaBancariaService;
-import com.example.demo.ejercicio.service.IHabitacionService;
 import com.example.demo.ejercicio.service.IHotelService;
-import com.example.demo.repository.EstudianteRepoImpl;
-import com.example.demo.repository.modelo.Estudiante;
-import com.example.demo.service.IEstudianteService;
+
 
 @SpringBootApplication
 public class RepasoProgra2Application implements CommandLineRunner{
@@ -55,11 +47,12 @@ public class RepasoProgra2Application implements CommandLineRunner{
 		
 		hotel.setHabitaciones(habitaciones);
 		
-		this.hotelService.agregar(hotel);
-		//System.out.println("Hotel encontrado: " + this.hotelService.buscar(1));
-		hotel.setDireccion("Entrada la 8");
-		this.hotelService.actualizar(hotel);
+		//this.hotelService.agregar(hotel);
 		
-		//this.hotelService.borrar(1);
+		System.out.println("Hotel encontrado: " + this.hotelService.buscar(1).getNombre());
+		//hotel.setDireccion("Entrada la 8");
+		//this.hotelService.actualizar(hotel);
+		
+		this.hotelService.borrar(1);
 	}
 }

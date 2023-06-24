@@ -35,6 +35,8 @@ public class Hotel {
 				+ "]";
 	}
 
+	
+
 	//Getters y Setters
 	public String getNombre() {
 		return nombre;
