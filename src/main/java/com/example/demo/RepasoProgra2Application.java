@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +7,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Alumno;
-import com.example.demo.repository.modelo.Materia;
-import com.example.demo.repository.modelo.Matricula;
-import com.example.demo.service.IMatriculaService;
+import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.service.IEstudianteService;
 
 
 @SpringBootApplication
 public class RepasoProgra2Application implements CommandLineRunner{
 
 	@Autowired
-	private IMatriculaService matriculaService;
+	private IEstudianteService estudianteService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RepasoProgra2Application.class, args);
@@ -28,32 +24,37 @@ public class RepasoProgra2Application implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		Alumno alumno = new Alumno();
-		alumno.setNombre("Homero");
-		Alumno alumno2 = new Alumno();
-		alumno2.setNombre("Teresa");
-		Alumno alumno3 = new Alumno();
-		alumno3.setNombre("Lupita");
+		Estudiante estudiante1 = new Estudiante();
+		estudiante1.setNombre("Gregorio");
+		estudiante1.setApellido("Perez");
+		estudiante1.setCedula("001");
 		
-		Materia materia = new Materia();
-		materia.setNombre("Literatura");
-		Materia materia2 = new Materia();
-		materia2.setNombre("Ingles");
+		Estudiante estudiante2 = new Estudiante();
+		estudiante2.setNombre("Roberto");
+		estudiante2.setApellido("Perez");
+		estudiante2.setCedula("002");
 		
-		List<Alumno> alumnos = new ArrayList<>();
-		alumnos.add(alumno);
-		alumnos.add(alumno2);
+		Estudiante estudiante3 = new Estudiante();
+		estudiante3.setNombre("Luz");
+		estudiante3.setApellido("Jackson");
+		estudiante3.setCedula("003");
 		
-		List<Materia> materias = new ArrayList<>();
-		materias.add(materia);
-		materias.add(materia2);
+//		this.estudianteService.agregar(estudiante1);
+//		this.estudianteService.agregar(estudiante2);
+//		this.estudianteService.agregar(estudiante3);
 		
-		Matricula matricula = new Matricula();
-		matricula.setAlumno(alumno);
-		matricula.setFecha(LocalDateTime.now());
-		matricula.setMateria(materia);
-		matricula.setNumero("001");
+		Estudiante busquedaSingle = this.estudianteService.buscarPorApellido("Jackson");
+		System.out.println("Resultado busqueda single: " + busquedaSingle);
 		
-		this.matriculaService.agregar(matricula);
+		Estudiante busquedaTyped = this.estudianteService.buscarPorApellidoTyped("Jackson");
+		System.out.println("Resultado busqueda typed: " + busquedaTyped);
+		
+		Estudiante busquedaNombreApellido = this.estudianteService.buscarPorApellidoyNombre("Perez", "Roberto");
+		System.out.println("Resultado busqueda nombre y apellido: " + busquedaNombreApellido);
+		
+		List<Estudiante> busquedaLista = this.estudianteService.buscarListaPorApellido("Perez");
+		System.out.println("Resultado busqueda nombre y apellido:");
+		busquedaLista.stream().forEach(System.out::println);
+		
 	}
 }
