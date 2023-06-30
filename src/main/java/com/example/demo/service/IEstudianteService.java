@@ -15,5 +15,6 @@ public interface IEstudianteService {
 	public Estudiante buscarPorApellidoTyped(String apellido);
 	public Estudiante buscarPorApellidoyNombre(String apellido, String nombre);
 	public List<Estudiante> buscarListaPorApellido(String apellido);
+	public Estudiante buscarPorApellidoNamed(String apellido);
 	
 }

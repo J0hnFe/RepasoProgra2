@@ -54,4 +54,11 @@ public class EstudianteServiceImpl implements IEstudianteService{
 		return this.estudianteRepo.seleccionarListaPorApellido(apellido);
 	}
 
+	@Override
+	public Estudiante buscarPorApellidoNamed(String apellido) {
+		return this.estudianteRepo.seleccionarPorApellidoNamed(apellido);
+	}
+	
+	
+
 }

@@ -8,16 +8,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.repository.modelo.Estudiante;
-import com.example.demo.repository.modelo.Trabajador;
 import com.example.demo.service.IEstudianteService;
-import com.example.demo.service.ITrabajadorService;
 
 
 @SpringBootApplication
 public class RepasoProgra2Application implements CommandLineRunner{
-	
+
 	@Autowired
-	private ITrabajadorService trabajadorService;
+	private IEstudianteService estudianteService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RepasoProgra2Application.class, args);
@@ -26,45 +24,49 @@ public class RepasoProgra2Application implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		Trabajador trabajador1 = new Trabajador();
-		trabajador1.setNombre("Homero");
-		trabajador1.setApellido("Simpson");
-		trabajador1.setCedula("001");
-		trabajador1.setCargo("Tecnico");
+		Estudiante estudiante1 = new Estudiante();
+		estudiante1.setNombre("Francisca");
+		estudiante1.setApellido("Lopez");
+		estudiante1.setCedula("0012");
 		
-		Trabajador trabajador2 = new Trabajador();
-		trabajador2.setNombre("Marge");
-		trabajador2.setApellido("Simpson");
-		trabajador2.setCedula("002");
-		trabajador2.setCargo("Juez");
+		Estudiante estudiante2 = new Estudiante();
+		estudiante2.setNombre("Alberto");
+		estudiante2.setApellido("Lopez");
+		estudiante2.setCedula("0013");
 		
-		Trabajador trabajador3 = new Trabajador();
-		trabajador3.setNombre("Barney");
-		trabajador3.setApellido("Gomez");
-		trabajador3.setCedula("003");
-		trabajador3.setCargo("Tecnico");
+		Estudiante estudiante3 = new Estudiante();
+		estudiante3.setNombre("Rene");
+		estudiante3.setApellido("Frog");
+		estudiante3.setCedula("0014");
 		
-//		this.trabajadorService.agregar(trabajador1);
-//		this.trabajadorService.agregar(trabajador2);
-//		this.trabajadorService.agregar(trabajador3);
+		Estudiante estudiante4 = new Estudiante();
+		estudiante4.setNombre("Jose");
+		estudiante4.setApellido("Balvin");
+		estudiante4.setCedula("0015");
 		
-		//Query con single result
-		Trabajador t1 =  this.trabajadorService.buscarPorApellido("Gomez");
-		System.out.println("Trabajador single: " + t1);
+//		this.estudianteService.agregar(estudiante1);
+//		this.estudianteService.agregar(estudiante2);
+//		this.estudianteService.agregar(estudiante3);
+//		this.estudianteService.agregar(estudiante4);
 		
-		//Query con result list
-		List<Trabajador> t2 =  this.trabajadorService.buscarPorCargo("Tecnico");
-		System.out.println("Trabajadores result list: ");
-		t2.stream().forEach(System.out :: println);
+		List<Estudiante> estudiantes1 = this.estudianteService.buscarListaPorApellido("Lopez");
+		System.out.println("\nList query");
+		estudiantes1.stream().forEach(System.out::println);
 		
-		//TypedQuery con single result
-		Trabajador t3 =  this.trabajadorService.buscarPorApellidoTyped("Gomez");
-		System.out.println("Trabajador typedQuery: " + t3);
+		Estudiante estudianteS = this.estudianteService.buscarPorApellido("Frog");
+		System.out.println("\nSingle Query");
+		System.out.println(estudianteS);
 		
-		//TypedQuery con result list
-		List<Trabajador> t4 =  this.trabajadorService.buscarPorCargo("Tecnico");
-		System.out.println("Trabajadores typedQuery: ");
-		t4.stream().forEach(System.out :: println);
+		Estudiante estudianteNA =  this.estudianteService.buscarPorApellidoyNombre("Frog", "Rene");
+		System.out.println("\nSingleQuery (2 argumentos)");
+		System.out.println(estudianteNA);
 		
+		Estudiante estudianteTy = this.estudianteService.buscarPorApellidoTyped("Balvin");
+		System.out.println("\nTypedQuery Single");
+		System.out.println(estudianteTy);
+		
+		Estudiante estudianteNam = this.estudianteService.buscarPorApellidoNamed("Frog");
+		System.out.println("\nSingle Named query");
+		System.out.println(estudianteNam);
 	}
 }

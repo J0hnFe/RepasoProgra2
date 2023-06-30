@@ -15,5 +15,6 @@ public interface IEstudianteRepo {
 	public Estudiante seleccionarPorApellidoTyped(String apellido);
 	public Estudiante seleccionarPorApellidoyNombre(String apellido, String nombre);
 	public List<Estudiante> seleccionarListaPorApellido(String apellido);
+	public Estudiante seleccionarPorApellidoNamed(String apellido);
 	
 }
