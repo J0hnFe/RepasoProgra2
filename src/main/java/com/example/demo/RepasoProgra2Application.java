@@ -52,21 +52,56 @@ public class RepasoProgra2Application implements CommandLineRunner{
 		List<Estudiante> estudiantes1 = this.estudianteService.buscarListaPorApellido("Lopez");
 		System.out.println("\nList query");
 		estudiantes1.stream().forEach(System.out::println);
+		System.out.println("");
 		
 		Estudiante estudianteS = this.estudianteService.buscarPorApellido("Frog");
 		System.out.println("\nSingle Query");
 		System.out.println(estudianteS);
+		System.out.println("");
 		
 		Estudiante estudianteNA =  this.estudianteService.buscarPorApellidoyNombre("Frog", "Rene");
 		System.out.println("\nSingleQuery (2 argumentos)");
 		System.out.println(estudianteNA);
+		System.out.println("");
 		
 		Estudiante estudianteTy = this.estudianteService.buscarPorApellidoTyped("Balvin");
 		System.out.println("\nTypedQuery Single");
 		System.out.println(estudianteTy);
+		System.out.println("");
 		
 		Estudiante estudianteNam = this.estudianteService.buscarPorApellidoNamed("Frog");
-		System.out.println("\nSingle Named query");
+		System.out.println("\nSingle Named query (apellido)");
 		System.out.println(estudianteNam);
+		System.out.println("");
+		
+		Estudiante estudianteANam = this.estudianteService.buscarPorNombreNamed("Francisca");
+		System.out.println("\nSingle Named query (nombre)");
+		System.out.println(estudianteANam);
+		System.out.println("");
+		
+		Estudiante estudianteNNat = this.estudianteService.buscarPorNombreNative("Alberto");
+		System.out.println("\nSingle Native  query (nombre)");
+		System.out.println(estudianteNNat);
+		System.out.println("");
+		
+		Estudiante estudianteANat = this.estudianteService.buscarPorApellidoNative("Balvin");
+		System.out.println("\nSingle Native  query (apellido)");
+		System.out.println(estudianteANat);
+		System.out.println("");
+		
+		Estudiante estudianteANNN = this.estudianteService.buscarPorApellidoNativeNamed("Frog");
+		System.out.println("\nSingle Native  named query (apellido)");
+		System.out.println(estudianteANNN);
+		System.out.println("");
+		
+		Estudiante estudianteNNN = this.estudianteService.buscarPorNombreNativeNamed("Alberto");
+		System.out.println("\nSingle Native named query (nombre)");
+		System.out.println(estudianteNNN);
+		System.out.println("");
+		
+		Estudiante estudianteCAP = this.estudianteService.buscarPorApellidoCAQ("Balvin");
+		System.out.println("\nSingle Criteria Api Query (apellido)");
+		System.out.println(estudianteCAP);
+		System.out.println("");
 	}
 }

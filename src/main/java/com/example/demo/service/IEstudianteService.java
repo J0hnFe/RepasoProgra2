@@ -17,4 +17,11 @@ public interface IEstudianteService {
 	public List<Estudiante> buscarListaPorApellido(String apellido);
 	public Estudiante buscarPorApellidoNamed(String apellido);
 	
+	public Estudiante buscarPorNombreNamed(String nombre);
+	public Estudiante buscarPorApellidoNative(String apellido);
+	public Estudiante buscarPorNombreNative(String nombre);
+	public Estudiante buscarPorApellidoNativeNamed(String apellido);
+	public Estudiante buscarPorNombreNativeNamed(String nombre);
+	public Estudiante buscarPorApellidoCAQ(String apellido);
+	
 }
