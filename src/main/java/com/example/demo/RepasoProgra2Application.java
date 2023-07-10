@@ -7,7 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.repository.modelo.Carro;
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.service.ICarroService;
 import com.example.demo.service.IEstudianteService;
 
 
@@ -15,7 +17,7 @@ import com.example.demo.service.IEstudianteService;
 public class RepasoProgra2Application implements CommandLineRunner{
 
 	@Autowired
-	private IEstudianteService estudianteService;
+	private ICarroService carroService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RepasoProgra2Application.class, args);
@@ -24,84 +26,34 @@ public class RepasoProgra2Application implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		Estudiante estudiante1 = new Estudiante();
-		estudiante1.setNombre("Francisca");
-		estudiante1.setApellido("Lopez");
-		estudiante1.setCedula("0012");
+		Carro carro1 = new Carro();
+		carro1.setAnio("2003");
+		carro1.setMarca("Chevrolet");
+		carro1.setModelo("Grand Vitara");
 		
-		Estudiante estudiante2 = new Estudiante();
-		estudiante2.setNombre("Alberto");
-		estudiante2.setApellido("Lopez");
-		estudiante2.setCedula("0013");
+		Carro carro2 = new Carro();
+		carro2.setAnio("2021");
+		carro2.setMarca("Toyota");
+		carro2.setModelo("Fortuner");
 		
-		Estudiante estudiante3 = new Estudiante();
-		estudiante3.setNombre("Rene");
-		estudiante3.setApellido("Frog");
-		estudiante3.setCedula("0014");
+		Carro carro3 = new Carro();
+		carro3.setAnio("1964");
+		carro3.setMarca("Pontiac");
+		carro3.setModelo("GTO");
 		
-		Estudiante estudiante4 = new Estudiante();
-		estudiante4.setNombre("Jose");
-		estudiante4.setApellido("Balvin");
-		estudiante4.setCedula("0015");
+		Carro carro4 = new Carro();
+		carro4.setAnio("1989");
+		carro4.setMarca("Jaguar");
+		carro4.setModelo("XJS");
 		
-//		this.estudianteService.agregar(estudiante1);
-//		this.estudianteService.agregar(estudiante2);
-//		this.estudianteService.agregar(estudiante3);
-//		this.estudianteService.agregar(estudiante4);
+//		this.carroService.agregar(carro1);
+//		this.carroService.agregar(carro2);
+//		this.carroService.agregar(carro3);
+//		this.carroService.agregar(carro4);
 		
-		List<Estudiante> estudiantes1 = this.estudianteService.buscarListaPorApellido("Lopez");
-		System.out.println("\nList query");
-		estudiantes1.stream().forEach(System.out::println);
-		System.out.println("");
+		this.carroService.buscarTodosDTO().stream().forEach(System.out::println);
 		
-		Estudiante estudianteS = this.estudianteService.buscarPorApellido("Frog");
-		System.out.println("\nSingle Query");
-		System.out.println(estudianteS);
-		System.out.println("");
 		
-		Estudiante estudianteNA =  this.estudianteService.buscarPorApellidoyNombre("Frog", "Rene");
-		System.out.println("\nSingleQuery (2 argumentos)");
-		System.out.println(estudianteNA);
-		System.out.println("");
-		
-		Estudiante estudianteTy = this.estudianteService.buscarPorApellidoTyped("Balvin");
-		System.out.println("\nTypedQuery Single");
-		System.out.println(estudianteTy);
-		System.out.println("");
-		
-		Estudiante estudianteNam = this.estudianteService.buscarPorApellidoNamed("Frog");
-		System.out.println("\nSingle Named query (apellido)");
-		System.out.println(estudianteNam);
-		System.out.println("");
-		
-		Estudiante estudianteANam = this.estudianteService.buscarPorNombreNamed("Francisca");
-		System.out.println("\nSingle Named query (nombre)");
-		System.out.println(estudianteANam);
-		System.out.println("");
-		
-		Estudiante estudianteNNat = this.estudianteService.buscarPorNombreNative("Alberto");
-		System.out.println("\nSingle Native  query (nombre)");
-		System.out.println(estudianteNNat);
-		System.out.println("");
-		
-		Estudiante estudianteANat = this.estudianteService.buscarPorApellidoNative("Balvin");
-		System.out.println("\nSingle Native  query (apellido)");
-		System.out.println(estudianteANat);
-		System.out.println("");
-		
-		Estudiante estudianteANNN = this.estudianteService.buscarPorApellidoNativeNamed("Frog");
-		System.out.println("\nSingle Native  named query (apellido)");
-		System.out.println(estudianteANNN);
-		System.out.println("");
-		
-		Estudiante estudianteNNN = this.estudianteService.buscarPorNombreNativeNamed("Alberto");
-		System.out.println("\nSingle Native named query (nombre)");
-		System.out.println(estudianteNNN);
-		System.out.println("");
-		
-		Estudiante estudianteCAP = this.estudianteService.buscarPorApellidoCAQ("Balvin");
-		System.out.println("\nSingle Criteria Api Query (apellido)");
-		System.out.println(estudianteCAP);
-		System.out.println("");
+
 	}
 }

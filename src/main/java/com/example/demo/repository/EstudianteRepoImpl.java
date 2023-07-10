@@ -127,6 +127,7 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 	@Override
 	public Estudiante seleccionarPorApellidoCAQ(String apellido) {
 		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
+		
 		// 1. especificar tipo de retorno
 		CriteriaQuery<Estudiante> myCriteriaQuery = myBuilder.createQuery(Estudiante.class);
 		
