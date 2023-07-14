@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,53 +9,66 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Carro;
-import com.example.demo.repository.modelo.Estudiante;
-import com.example.demo.service.ICarroService;
-import com.example.demo.service.IEstudianteService;
+import com.example.demo.repository.modelo.Habitacion;
+import com.example.demo.repository.modelo.Hotel;
+import com.example.demo.service.IHotelService;
 
 
 @SpringBootApplication
 public class RepasoProgra2Application implements CommandLineRunner{
 
 	@Autowired
-	private ICarroService carroService;
+	private IHotelService hotelService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RepasoProgra2Application.class, args);
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
-
-		Carro carro1 = new Carro();
-		carro1.setAnio("2003");
-		carro1.setMarca("Chevrolet");
-		carro1.setModelo("Grand Vitara");
+	public void run(String... args) throws Exception {		
 		
-		Carro carro2 = new Carro();
-		carro2.setAnio("2021");
-		carro2.setMarca("Toyota");
-		carro2.setModelo("Fortuner");
+		Hotel hotel1 = new Hotel();
+		hotel1.setNombre("Hotel Uno");
+		hotel1.setDireccion("La Kennedy");
 		
-		Carro carro3 = new Carro();
-		carro3.setAnio("1964");
-		carro3.setMarca("Pontiac");
-		carro3.setModelo("GTO");
+		Hotel hotel2 = new Hotel();
+		hotel2.setNombre("Hotel Dos");
+		hotel2.setDireccion("Jipijapa");
 		
-		Carro carro4 = new Carro();
-		carro4.setAnio("1989");
-		carro4.setMarca("Jaguar");
-		carro4.setModelo("XJS");
+		Hotel hotel3 = new Hotel();
+		hotel3.setNombre("Hotel Tres");
+		hotel3.setDireccion("La Mascota");
 		
-//		this.carroService.agregar(carro1);
-//		this.carroService.agregar(carro2);
-//		this.carroService.agregar(carro3);
-//		this.carroService.agregar(carro4);
+		Habitacion habitacion1 = new Habitacion();
+		habitacion1.setHotel(hotel1);
+		habitacion1.setNumero("10");
+		habitacion1.setValor(new BigDecimal(28));
 		
-		this.carroService.buscarTodosDTO().stream().forEach(System.out::println);
+		Habitacion habitacion2 = new Habitacion();
+		habitacion2.setHotel(hotel1);
+		habitacion2.setNumero("11");
+		habitacion2.setValor(new BigDecimal(54));
 		
+		Habitacion habitacion3 = new Habitacion();
+		habitacion3.setHotel(hotel2);
+		habitacion3.setNumero("20");
+		habitacion3.setValor(new BigDecimal(15));
 		
-
+		List<Habitacion> habitacionesHotel1 = new ArrayList<>();
+		habitacionesHotel1.add(habitacion1);
+		habitacionesHotel1.add(habitacion2);
+		
+		List<Habitacion> habitacionesHotel2 = new ArrayList<>();
+		habitacionesHotel2.add(habitacion3);
+		
+		hotel1.setHabitaciones(habitacionesHotel1);
+		hotel2.setHabitaciones(habitacionesHotel2);
+		
+//		this.hotelService.agregar(hotel1);
+//		this.hotelService.agregar(hotel2);
+//		this.hotelService.agregar(hotel3);
+		
+		this.hotelService.buscarHotelInnerJoin().stream().forEach(System.out::println);
+		
 	}
 }
