@@ -94,4 +94,18 @@ public class UniversidadRepoImpl implements IUniversidadRepo{
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Universidad> seleccionarFetchJoin() {
+		String jpql = "SELECT u from Universidad u JOIN FETCH u.departamentos dpto";
+		TypedQuery<Universidad> query = this.entityManager.createQuery(jpql, Universidad.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Departamento> seleccionarDptoFetchJoin() {
+		String jpql = "SELECT dpto from Departamento dpto JOIN FETCH dpto.universidad"; 
+		TypedQuery<Departamento> query = this.entityManager.createQuery(jpql, Departamento.class);
+		return query.getResultList();
+	}
+
 }

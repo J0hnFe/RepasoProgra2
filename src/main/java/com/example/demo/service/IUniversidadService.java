@@ -23,5 +23,8 @@ public interface IUniversidadService {
 	
 	public List<Universidad> buscarWhereJoin();
 	public List<Departamento> buscarDptoWhereJoin();
+	
+	public List<Universidad> buscarFetchJoin();
+	public List<Departamento> buscarDptoFetchJoin();
 
 }

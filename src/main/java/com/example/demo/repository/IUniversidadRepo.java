@@ -23,5 +23,8 @@ public interface IUniversidadRepo {
 	
 	public List<Universidad> seleccionarWhereJoin();
 	public List<Departamento> seleccionarDptoWhereJoin();
+	
+	public List<Universidad> seleccionarFetchJoin();
+	public List<Departamento> seleccionarDptoFetchJoin();
 
 }

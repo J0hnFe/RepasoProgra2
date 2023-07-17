@@ -70,4 +70,14 @@ public class UniversidadServiceImpl implements IUniversidadService{
 		return this.universidadRepo.seleccionarDptoWhereJoin();
 	}
 
+	@Override
+	public List<Universidad> buscarFetchJoin() {
+		return this.universidadRepo.seleccionarFetchJoin();
+	}
+
+	@Override
+	public List<Departamento> buscarDptoFetchJoin() {
+		return this.universidadRepo.seleccionarDptoFetchJoin();
+	}
+
 }

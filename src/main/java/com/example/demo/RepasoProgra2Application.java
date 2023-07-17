@@ -92,7 +92,10 @@ public class RepasoProgra2Application implements CommandLineRunner{
 		System.out.println("Join Where:");
 		this.universidadService.buscarWhereJoin().stream().forEach(System.out::println);
 		this.universidadService.buscarDptoWhereJoin().stream().forEach(System.out::println);
-		
+		System.out.println("");
+		System.out.println("Join Fetch:");
+		this.universidadService.buscarFetchJoin().stream().forEach(System.out::println);
+		this.universidadService.buscarDptoFetchJoin().stream().forEach(System.out::println);
 		
 	}
 }
