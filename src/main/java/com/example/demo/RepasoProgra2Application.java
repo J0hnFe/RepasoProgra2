@@ -1,22 +1,25 @@
 package com.example.demo;
 
-import java.util.Random;
+import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 
-import com.example.demo.repository.modelo.Propietario;
+import com.example.demo.repository.modelo.CtaBancaria;
+import com.example.demo.service.ICtaBancariaService;
 import com.example.demo.service.IPropietarioService;
+import com.example.demo.service.ITransferenciaService;
 
 @SpringBootApplication
 public class RepasoProgra2Application implements CommandLineRunner {
 
 	@Autowired
-	private IPropietarioService propietarioService;
-	
+	private ITransferenciaService transferenciaService;
+	@Autowired
+	private ICtaBancariaService ctaBancariaService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(RepasoProgra2Application.class, args);
 	}
@@ -24,14 +27,27 @@ public class RepasoProgra2Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		System.out.println("Hay transaccion en el main?: " + TransactionSynchronizationManager.isActualTransactionActive());
+		BigDecimal montoCta1 = new BigDecimal(100);
+		BigDecimal montoCta2 = new BigDecimal(200);
+
+
+
+		CtaBancaria ctaOrigen = new CtaBancaria();
+		ctaOrigen.setNumero("111");
+		ctaOrigen.setSaldo(montoCta1);
+		ctaOrigen.setTipo("A");
+
+//		this.ctaBancariaService.agregar(ctaOrigen);
+
+		CtaBancaria ctaDestino = new CtaBancaria();
+		ctaDestino.setNumero("222");
+		ctaDestino.setSaldo(montoCta2);
+		ctaDestino.setTipo("A");
+
+//		this.ctaBancariaService.agregar(ctaDestino);
 		
-		Propietario propietario1 = new Propietario();
-		propietario1.setNombre("Juan");
-		propietario1.setApellido("Perez");
-		propietario1.setCedula("111");
+		BigDecimal montoTrasferencia = new BigDecimal(200);		
+		this.transferenciaService.realizarTransf(ctaOrigen.getNumero(), ctaDestino.getNumero(), montoTrasferencia);
 		
-		this.propietarioService.agregar(propietario1);
 	}
-	
 }
