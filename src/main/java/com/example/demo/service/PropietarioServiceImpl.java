@@ -31,8 +31,8 @@ public class PropietarioServiceImpl implements IPropietarioService{
 //		this.pruebaService.pruebaMandatory();
 //		this.pruebaService.pruebaSupports();
 //		this.pruebaService.pruebaNotSupported();
-//		this.pruebaService.pruebaRequired();
-		this.pruebaService.pruebaRequiresNew();
+		this.pruebaService.pruebaRequired();
+//		this.pruebaService.pruebaRequiresNew();
 	}
 
 	@Override
