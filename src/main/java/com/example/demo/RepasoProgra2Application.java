@@ -1,33 +1,22 @@
 package com.example.demo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
-import com.example.demo.repository.modelo.Estudiante;
-import com.example.demo.repository.modelo.Materia;
-import com.example.demo.repository.modelo.Provincia;
-import com.example.demo.repository.modelo.Semestre;
-import com.example.demo.service.IEstudianteService;
-import com.example.demo.service.IMateriaService;
-import com.example.demo.service.IMatriculaService;
+import com.example.demo.repository.modelo.Propietario;
+import com.example.demo.service.IPropietarioService;
 
 @SpringBootApplication
 public class RepasoProgra2Application implements CommandLineRunner {
 
 	@Autowired
-	private IMateriaService iMateriaService;
-
-	@Autowired
-	private IEstudianteService estudianteService;
-
-	@Autowired
-	private IMatriculaService iMatriculaService;
-
+	private IPropietarioService propietarioService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(RepasoProgra2Application.class, args);
 	}
@@ -35,55 +24,14 @@ public class RepasoProgra2Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Semestre semestre = new Semestre();
-		semestre.setNumero("3");
-
-		Materia materia = new Materia();
-		materia.setCodigo("1236");
-		materia.setNombre("Matematicas");
-		materia.setSemestre(semestre);
-
-		 this.iMateriaService.agregar(materia);
-
-		Semestre semestre2 = new Semestre();
-		semestre2.setNumero("4");
-
-		Materia materia2 = new Materia();
-		materia2.setCodigo("111");
-		materia2.setNombre("Progra");
-		materia2.setSemestre(semestre2);
-
-		 this.iMateriaService.agregar(materia2);
-
-		Semestre semestre3 = new Semestre();
-		semestre3.setNumero("5");
-
-		Materia materia3 = new Materia();
-		materia3.setCodigo("5555");
-		materia3.setNombre("Redes");
-		materia3.setSemestre(semestre3);
-
-		this.iMateriaService.agregar(materia3);
-
-		Provincia provincia = new Provincia();
-		provincia.setNombre("Azuay");
-		provincia.setCapital("Cuenca");
-
-		Estudiante estudiante = new Estudiante();
-		estudiante.setNombre("Jimmy");
-		estudiante.setApellido("Ortega");
-		estudiante.setCedula("123");
-		estudiante.setProvincia(provincia);
-		 this.estudianteService.agregar(estudiante);
-
-		List<String> codigosMatriculas = new ArrayList<>();
-		String codigoM = "1236";
-		String codigoM2 = "5555";
-		codigosMatriculas.add(codigoM);
-		codigosMatriculas.add(codigoM2);
-
-		this.iMatriculaService.agregar("123", codigosMatriculas);
-
-		this.iMatriculaService.buscarTodos().stream().forEach(System.out::println);
+		System.out.println("Hay transaccion en el main?: " + TransactionSynchronizationManager.isActualTransactionActive());
+		
+		Propietario propietario1 = new Propietario();
+		propietario1.setNombre("Juan");
+		propietario1.setApellido("Perez");
+		propietario1.setCedula("111");
+		
+		this.propietarioService.agregar(propietario1);
 	}
+	
 }
