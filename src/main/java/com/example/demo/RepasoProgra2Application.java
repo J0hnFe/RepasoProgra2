@@ -40,46 +40,48 @@ public class RepasoProgra2Application implements CommandLineRunner {
 		cta1.setTipo("A");
 		this.ctaBancariaService.agregar(cta1);
 
-//		// Inicio
-//		long tiempoInicial = System.currentTimeMillis();
-//
-//		for (int i = 0; i <= 30; i++) {
-//
-//			CtaBancaria ctaFor = new CtaBancaria();
-//			ctaFor.setNumero(String.valueOf(i));
-//			ctaFor.setSaldo(montoCta1);
-//			ctaFor.setTipo("A");
-//			this.ctaBancariaService.agregar(ctaFor);
-//
-//		}
-//		// Final
-//		long tiempoFinal = System.currentTimeMillis();
-//		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
-//		LOG.info("Tiempo transcurrido: " + (tiempoFinal - tiempoInicial));
-//		LOG.info("Tiempo transcurrido: " + tiempoTranscurrido);
+		// // Inicio
+		// long tiempoInicial = System.currentTimeMillis();
+		//
+		// for (int i = 0; i <= 30; i++) {
+		//
+		// CtaBancaria ctaFor = new CtaBancaria();
+		// ctaFor.setNumero(String.valueOf(i));
+		// ctaFor.setSaldo(montoCta1);
+		// ctaFor.setTipo("A");
+		// this.ctaBancariaService.agregar(ctaFor);
+		//
+		// }
+		// // Final
+		// long tiempoFinal = System.currentTimeMillis();
+		// long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
+		// LOG.info("Tiempo transcurrido: " + (tiempoFinal - tiempoInicial));
+		// LOG.info("Tiempo transcurrido: " + tiempoTranscurrido);
 
-//		// Inicio
-//		long tiempoInicial = System.currentTimeMillis();
-//		List<CtaBancaria> lista = new ArrayList<>();
-//
-//		for (int i = 1;  i < 100;  i++) {
-//
-//			CtaBancaria ctaFor = new CtaBancaria();
-//			ctaFor.setNumero(String.valueOf(i));
-//			ctaFor.setSaldo(montoCta1);
-//			ctaFor.setTipo("A");
-//			lista.add(ctaFor);
-//
-//		}
-//		
-////		lista.stream().forEach(x -> this.ctaBancariaService.agregar(x)); //Un hilo (lento)
-//		lista.parallelStream().forEach(x -> this.ctaBancariaService.agregar2(x));		//Varios hilos (rapido) hilos se llaman diferente
-//		
-//		// Final
-//		long tiempoFinal = System.currentTimeMillis();
-//		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
-//		LOG.info("Tiempo transcurrido: " + (tiempoFinal - tiempoInicial));
-//		LOG.info("Tiempo transcurrido: " + tiempoTranscurrido);
+		// // Inicio
+		// long tiempoInicial = System.currentTimeMillis();
+		// List<CtaBancaria> lista = new ArrayList<>();
+		//
+		// for (int i = 1; i < 100; i++) {
+		//
+		// CtaBancaria ctaFor = new CtaBancaria();
+		// ctaFor.setNumero(String.valueOf(i));
+		// ctaFor.setSaldo(montoCta1);
+		// ctaFor.setTipo("A");
+		// lista.add(ctaFor);
+		//
+		// }
+		//
+		//// lista.stream().forEach(x -> this.ctaBancariaService.agregar(x)); //Un hilo
+		// (lento)
+		// lista.parallelStream().forEach(x -> this.ctaBancariaService.agregar2(x));
+		// //Varios hilos (rapido) hilos se llaman diferente
+		//
+		// // Final
+		// long tiempoFinal = System.currentTimeMillis();
+		// long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
+		// LOG.info("Tiempo transcurrido: " + (tiempoFinal - tiempoInicial));
+		// LOG.info("Tiempo transcurrido: " + tiempoTranscurrido);
 
 		// Inicio
 		long tiempoInicial = System.currentTimeMillis();
@@ -97,41 +99,41 @@ public class RepasoProgra2Application implements CommandLineRunner {
 
 		lista.stream().forEach(x -> this.ctaBancariaService.agregar(x)); // Un hilo (lento)
 
-//		lista.parallelStream().forEach(x -> this.ctaBancariaService.agregar(x)); // Varios hilos (rapido) hilos se llaman diferente
-																					
+		// lista.parallelStream().forEach(x -> this.ctaBancariaService.agregar(x)); //
+		// Varios hilos (rapido) hilos se llaman diferente
 
 		// Final
 		long tiempoFinal = System.currentTimeMillis();
 		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
 		LOG.info("Tiempo transcurrido: " + (tiempoFinal - tiempoInicial));
 		LOG.info("Tiempo transcurrido: " + tiempoTranscurrido);
-		
-		
 
-//		// Inicio
-//		long tiempoInicial = System.currentTimeMillis();
-//		List<CtaBancaria> lista = new ArrayList<>();
-//
-//		for (int i = 1; i < 30; i++) {
-//
-//			CtaBancaria ctaFor = new CtaBancaria();
-//			ctaFor.setNumero(String.valueOf(i));
-//			ctaFor.setSaldo(montoCta1);
-//			ctaFor.setTipo("A");
-//			lista.add(ctaFor);
-//
-//		}
-//
-//		lista.stream().forEach(x -> this.ctaBancariaService.agregar(x)); //Un hilo (lento)
-//		Stream<String> listaFinal = lista.parallelStream().map(x -> this.ctaBancariaService.agregar2(x));
-//		LOG.info("C guardaron las siguientes cuentas: ");
-//		listaFinal.forEach(x -> LOG.info(x));
-//
-//		// Final
-//		long tiempoFinal = System.currentTimeMillis();
-//		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
-//		LOG.info("Tiempo transcurrido: " + (tiempoFinal - tiempoInicial));
-//		LOG.info("Tiempo transcurrido: " + tiempoTranscurrido);
+		// // Inicio
+		// long tiempoInicial = System.currentTimeMillis();
+		// List<CtaBancaria> lista = new ArrayList<>();
+		//
+		// for (int i = 1; i < 30; i++) {
+		//
+		// CtaBancaria ctaFor = new CtaBancaria();
+		// ctaFor.setNumero(String.valueOf(i));
+		// ctaFor.setSaldo(montoCta1);
+		// ctaFor.setTipo("A");
+		// lista.add(ctaFor);
+		//
+		// }
+		//
+		// lista.stream().forEach(x -> this.ctaBancariaService.agregar(x)); //Un hilo
+		// (lento)
+		// Stream<String> listaFinal = lista.parallelStream().map(x ->
+		// this.ctaBancariaService.agregar2(x));
+		// LOG.info("C guardaron las siguientes cuentas: ");
+		// listaFinal.forEach(x -> LOG.info(x));
+		//
+		// // Final
+		// long tiempoFinal = System.currentTimeMillis();
+		// long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
+		// LOG.info("Tiempo transcurrido: " + (tiempoFinal - tiempoInicial));
+		// LOG.info("Tiempo transcurrido: " + tiempoTranscurrido);
 	}
 
 }
