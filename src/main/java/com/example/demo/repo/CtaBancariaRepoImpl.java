@@ -25,7 +25,6 @@ public class CtaBancariaRepoImpl implements ICtaBancariaRepo {
 	public void insertar(CtaBancaria cb) {
 
 		LOG.info("Hilo repo: " + Thread.currentThread().getName()); // Indicar el hilo con el que se ejecuta el prog
-
 		this.entityManager.persist(cb);
 	}
 
@@ -34,7 +33,6 @@ public class CtaBancariaRepoImpl implements ICtaBancariaRepo {
 		String jpql = "SELECT cb FROM CtaBancaria cb WHERE cb.numero = :datoNumero";
 		TypedQuery<CtaBancaria> query = this.entityManager.createQuery(jpql, CtaBancaria.class);
 		query.setParameter("datoNumero", numero);
-
 		return query.getSingleResult();
 	}
 
